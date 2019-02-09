@@ -54,7 +54,7 @@ module.exports.run = async (MAIN, raid, main_area, sub_area, embed_area, server,
             if(MAIN.debug.Raids == 'ENABLED'){ console.info('[DEBUG] [Modules] [raids.js] Raid Passed Filters for '+raid_channel[0]+'.'); }
             send_raid(MAIN, channel, raid, type, main_area, sub_area, embed_area, server, timezone);
           }
-          else if(filter.Ex_Eligible_Only == raid.sponsor_id){
+          else if(filter.Ex_Eligible_Only == raid.ex_raid_eligible || filter.Ex_Eligible_Only == raid.ex_raid_eligible){
             if(MAIN.debug.Raids == 'ENABLED'){ console.info('[DEBUG] [Modules] [raids.js] Raid Passed Filters for '+raid_channel[0]+'.'); }
             send_raid(MAIN, channel, raid, type, main_area, sub_area, embed_area, server, timezone);
           }
@@ -105,7 +105,7 @@ function send_raid(MAIN, channel, raid, type, main_area, sub_area, embed_area, s
 
     // CHECK IF SPONSORED GYM
     let raid_sponsor = '';
-    if(raid.sponsor_id == true){ raid_sponsor = ' | '+MAIN.emotes.exPass+' Eligible'; }
+    if(raid.ex_raid_eligible == true){ raid_sponsor = ' | '+MAIN.emotes.exPass+' Eligible'; }
 
     // CHECK FOR GYM NAME
     let gym_name = '';
