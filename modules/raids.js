@@ -54,7 +54,7 @@ module.exports.run = async (MAIN, raid, main_area, sub_area, embed_area, server,
             if(MAIN.debug.Raids == 'ENABLED'){ console.info('[DEBUG] [Modules] [raids.js] Raid Passed Filters for '+raid_channel[0]+'.'); }
             send_raid(MAIN, channel, raid, type, main_area, sub_area, embed_area, server, timezone);
           }
-          else if(filter.Ex_Eligible_Only == raid.sponsor_id){
+          else if(filter.Ex_Eligible_Only == raid.ex_raid_eligible || filter.Ex_Eligible_Only == raid.sponsor_id){
             if(MAIN.debug.Raids == 'ENABLED'){ console.info('[DEBUG] [Modules] [raids.js] Raid Passed Filters for '+raid_channel[0]+'.'); }
             send_raid(MAIN, channel, raid, type, main_area, sub_area, embed_area, server, timezone);
           }
