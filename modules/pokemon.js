@@ -158,13 +158,13 @@ function send_pokemon(MAIN, internal_value, sighting, channel, time_now, main_ar
       case 6: weather_boost = ' '+MAIN.emotes.snow+' *Boosted*'; break;
       case 7: weather_boost = ' '+MAIN.emotes.fog+' *Boosted*'; break;
     }
-
     // CREATE AND SEND THE EMBED
+    let verified = sighting.disappear_time_verified ? MAIN.emotes.checkYes : MAIN.emotes.yellowQuestion;
     let pokemon_embed = new Discord.RichEmbed()
       .setColor('00ccff').setThumbnail(pokemon_url)
       .addField(pokemon_name+' ('+internal_value+'%)'+weather_boost, 'Atk: '+sighting.individual_attack+' / Def: '+sighting.individual_defense+' / Sta: '+sighting.individual_stamina+' | '+pokemon_type, false)
       .addField('Level '+sighting.pokemon_level+' | CP '+sighting.cp+gender, move_name_1+' '+move_type_1+' / '+move_name_2+' '+move_type_2, false)
-      .addField('Disappears: '+hide_time+' (*'+hide_minutes+' Mins*)', height+' | '+weight, false)
+      .addField('Disappears: '+hide_time+' (*'+hide_minutes+' Mins*)'+verified, height+' | '+weight+'\n'+pokemon_type, false)
       .addField(embed_area+' | Directions:','[Google Maps](https://www.google.com/maps?q='+sighting.latitude+','+sighting.longitude+') | [Apple Maps](http://maps.apple.com/maps?daddr='+sighting.latitude+','+sighting.longitude+'&z=10&t=s&dirflg=w) | [Waze](https://waze.com/ul?ll='+sighting.latitude+','+sighting.longitude+'&navigate=yes)')
       .setImage(img_url);
 
@@ -218,10 +218,11 @@ async function send_without_iv(MAIN, sighting, channel, time_now, main_area, sub
     }
 
     // CREATE AND SEND THE EMBED
+    let verified = sighting.disappear_time_verified ? MAIN.emotes.checkYes : MAIN.emotes.yellowQuestion;
     let pokemon_embed = new Discord.RichEmbed()
       .setColor('00ccff').setThumbnail(pokemon_url)
       .setTitle('A Wild **'+name+'** has Appeared!')
-      .addField('Disappears: '+hide_time+' (*'+hide_minutes+' Mins*)', embed_area+weather_boost+'\n'+pokemon_type, false)
+      .addField('Disappears: '+hide_time+' (*'+hide_minutes+' Mins*)'+verified, height+' | '+weight+'\n'+pokemon_type, false)
       .addField('Directions:','[Google Maps](https://www.google.com/maps?q='+sighting.latitude+','+sighting.longitude+') | [Apple Maps](http://maps.apple.com/maps?daddr='+sighting.latitude+','+sighting.longitude+'&z=10&t=s&dirflg=w) | [Waze](https://waze.com/ul?ll='+sighting.latitude+','+sighting.longitude+'&navigate=yes)')
       .setImage(img_url);
 
