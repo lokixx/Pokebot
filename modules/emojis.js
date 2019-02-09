@@ -435,6 +435,11 @@ function LoadEmojis(bot, serverIDs)
                 this.checkYes = guild.emojis.find(emoji => emoji.name === "check_yes")
                 if(this.checkYes) { this.checkYesReact = this.checkYes; this.checkYes = this.checkYes.toString() }
             }
+	    if(!this.yellowQuestion)
+            {
+                this.yellowQuestion = guild.emojis.find(emoji => emoji.name === "yellow_question");
+                if(this.yellowQuestion) { this.yellowQuestionReact = this.yellowQuestion; this.yellowQuestion = this.yellowQuestion.toString() }
+            }
         }
     }   
     
