@@ -204,12 +204,13 @@ async function prepare_alert(MAIN, internal_value, sighting, time_now, main_area
     }
 
     // CREATE AND SEND THE EMBED
+    let verified = sighting.disappear_time_verified ? MAIN.emotes.checkYes : MAIN.emotes.yellowQuestion;
     let pokemon_embed = new Discord.RichEmbed()
       .setColor('00ccff')
       .setThumbnail(pokemon_url)
       .setTitle(name+' '+sighting.individual_attack+'/'+sighting.individual_defense+'/'+sighting.individual_stamina+' ('+internal_value+'%)'+weather_boost)
       .addField('Level '+sighting.pokemon_level+' | CP '+sighting.cp+gender, move_name_1+' '+move_type_1+' / '+move_name_2+' '+move_type_2, false)
-      .addField('Disappears: '+hide_time+' (*'+hide_minutes+' Mins*)', height+' | '+weight+'\n'+pokemon_type, false)
+      .addField('Disappears: '+hide_time+' (*'+hide_minutes+' Mins*)'+verified, height+' | '+weight+'\n'+pokemon_type, false)
       .addField(embed_area+' | Directions:','[Google Maps](https://www.google.com/maps?q='+sighting.latitude+','+sighting.longitude+') | [Apple Maps](http://maps.apple.com/maps?daddr='+sighting.latitude+','+sighting.longitude+'&z=10&t=s&dirflg=w) | [Waze](https://waze.com/ul?ll='+sighting.latitude+','+sighting.longitude+'&navigate=yes)')
       .setImage(img_url);
 
