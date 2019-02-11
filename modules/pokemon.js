@@ -162,7 +162,7 @@ function send_pokemon(MAIN, internal_value, sighting, channel, time_now, main_ar
     // CREATE AND SEND THE EMBED
     let pokemon_embed = new Discord.RichEmbed()
       .setColor('00ccff').setThumbnail(pokemon_url)
-      .addField(pokemon_name+' ('+internal_value+'%)'+weather_boost, 'Atk: '+sighting.individual_attack+' / Def: '+sighting.individual_defense+' / Sta: '+sighting.individual_stamina+' | '+pokemon_type, false)
+      .addField(pokemon_name+' ('+internal_value+'%)'+weather_boost, 'Atk: '+sighting.individual_attack+' / Def: '+sighting.individual_defense+' / Sta: '+sighting.individual_stamina, false)
       .addField('Level '+sighting.pokemon_level+' | CP '+sighting.cp+gender, move_name_1+' '+move_type_1+' / '+move_name_2+' '+move_type_2, false)
       .addField('Disappears: '+hide_time+' (*'+hide_minutes+' Mins*)', height+' | '+weight, false)
       .addField(embed_area+' | Directions:','[Google Maps](https://www.google.com/maps?q='+sighting.latitude+','+sighting.longitude+') | [Apple Maps](http://maps.apple.com/maps?daddr='+sighting.latitude+','+sighting.longitude+'&z=10&t=s&dirflg=w) | [Waze](https://waze.com/ul?ll='+sighting.latitude+','+sighting.longitude+'&navigate=yes)')
